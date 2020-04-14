@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="wrap_content" format="boolean" />
+    <declare-styleable name="WrapContentHorizontalGridView">
+        <attr name="wrap_content" />
+    </declare-styleable>
+
+    <declare-styleable name="WrapContentVerticalGridView">
+        <attr name="wrap_content" />
+    </declare-styleable>
+
+    <declare-styleable name="SubmenuListView">
+        <attr name="itemBackgroundResource" format="reference" />
+        <attr name="itemTextColor" format="color" />
+        <attr name="itemTextSize" format="dimension" />
+        <attr name="itemFocusable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="AutoVerticalScrollTextView">
+        <attr name="delayStart" format="integer" />
+        <attr name="resetOnFinish" format="boolean" />
+        <attr name="step" format="integer" />
+        <attr name="speed" format="integer" />
+    </declare-styleable>
+</resources>

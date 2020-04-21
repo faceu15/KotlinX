@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">KotlinX</string>
+    <string name="skin_activity">SkinActivity</string>
+    <string name="binderpoolactivity">BinderPoolActivity</string>
+    <string name="bookactivity">BookActivity</string>
+
+    <string name="change_skin">应用换肤</string>
+    <string name="change_skin_assets">Assets换肤</string>
+    <string name="change_skin_sdcard">SDcard换肤</string>
 </resources>

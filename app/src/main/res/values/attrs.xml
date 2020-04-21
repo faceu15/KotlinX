@@ -22,4 +22,7 @@
         <attr name="step" format="integer" />
         <attr name="speed" format="integer" />
     </declare-styleable>
+
+    <attr name="enable" format="boolean"/>
+
 </resources>

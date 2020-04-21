@@ -6,9 +6,12 @@ import android.view.WindowManager;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
+
+import skin.support.app.SkinCompatActivity;
 
 /**
  * <pre>
@@ -18,7 +21,7 @@ import androidx.fragment.app.FragmentActivity;
  *     desc   :
  * </pre>
  */
-public abstract class BaseActivity<T extends ViewDataBinding> extends FragmentActivity {
+public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {
 
     protected Context mContext = null;
     protected T mViewDataBinding = null;

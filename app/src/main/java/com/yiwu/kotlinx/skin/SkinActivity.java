@@ -2,6 +2,7 @@ package com.yiwu.kotlinx.skin;
 
 import android.content.pm.PackageManager;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -17,7 +18,7 @@ import com.yiwu.kotlinx.databinding.ActivitySkinBinding;
 import skin.support.SkinCompatManager;
 import skin.support.utils.SkinPreference;
 
-public class SkinActivity extends BaseActivity<ActivitySkinBinding> {
+public class SkinActivity extends BaseActivity<ActivitySkinBinding> implements View.OnClickListener {
 
 
     @Override
@@ -31,64 +32,9 @@ public class SkinActivity extends BaseActivity<ActivitySkinBinding> {
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
-
-        mViewDataBinding.btnChangeSkin.setOnClickListener(v -> {
-            Log.i("DDDD", "SkinActivity[35]->skinName=: "+SkinPreference.getInstance().getSkinName());
-            if (SkinPreference.getInstance().getSkinName().equals("night_skin")) {
-                SkinCompatManager.getInstance().restoreDefaultTheme();
-            } else {
-                Log.i("DDDD", "SkinActivity[40]->init: 应用内换肤");
-                SkinCompatManager.getInstance().loadSkin("night_skin", SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
-            }
-        });
-
-        mViewDataBinding.btnAssets.setOnClickListener(v -> {
-            if (SkinPreference.getInstance().getSkinName().equals("night")) {
-                SkinCompatManager.getInstance().restoreDefaultTheme();
-            } else {
-                SkinCompatManager.getInstance().loadSkin("night.skin", new SkinCompatManager.SkinLoaderListener() {
-                    @Override
-                    public void onStart() {
-                        Log.i("DDDD", "SkinActivity[42]->onStart: ");
-                    }
-
-                    @Override
-                    public void onSuccess() {
-                        Log.i("DDDD", "SkinActivity[47]->onSuccess: ");
-                    }
-
-                    @Override
-                    public void onFailed(String errMsg) {
-                        Log.i("DDDD", "SkinActivity[52]->onFailed: " + errMsg.toString());
-                    }
-                }, SkinCompatManager.SKIN_LOADER_STRATEGY_ASSETS);
-            }
-        });
-
-        mViewDataBinding.btnSdcard.setOnClickListener(v -> {
-            if (SkinPreference.getInstance().getSkinName().equals("night")) {
-                SkinCompatManager.getInstance().restoreDefaultTheme();
-            } else {
-                SkinCompatManager.getInstance().loadSkin("night.skin", new SkinCompatManager.SkinLoaderListener() {
-                    @Override
-                    public void onStart() {
-
-                    }
-
-                    @Override
-                    public void onSuccess() {
-                        Log.i("DDDD", "SkinActivity[77]->onSuccess: " + SkinPreference.getInstance().getSkinName());
-                    }
-
-                    @Override
-                    public void onFailed(String errMsg) {
-                        Log.i("DDDD", "SkinActivity[52]->onFailed: " + errMsg.toString());
-                    }
-                }, CustomSDCardLoader.SKIN_LOADER_STRATEGY_SDCARD);
-            }
-        });
-
-
+        mViewDataBinding.btnChangeSkin.setOnClickListener(this);
+        mViewDataBinding.btnAssets.setOnClickListener(this);
+        mViewDataBinding.btnSdcard.setOnClickListener(this);
     }
 
 
@@ -103,6 +49,37 @@ public class SkinActivity extends BaseActivity<ActivitySkinBinding> {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {
             Log.i("DDDD", "SkinActivity[87]->onRequestPermissionsResult: 已获取权限");
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_change_skin:
+                Log.i("DDDD", "SkinActivity[35]->skinName=: " + SkinPreference.getInstance().getSkinName());
+                if (SkinPreference.getInstance().getSkinName().equals("night_skin")) {
+                    SkinCompatManager.getInstance().restoreDefaultTheme();
+                } else {
+                    SkinCompatManager.getInstance().loadSkin("night_skin", SkinCompatManager.SKIN_LOADER_STRATEGY_PREFIX_BUILD_IN);
+                }
+                break;
+            case R.id.btn_assets:
+                Log.i("DDDD", "SkinActivity[46]->Assets skinName: " + SkinPreference.getInstance().getSkinName());
+                if (SkinPreference.getInstance().getSkinName().equals("night.skin")) {
+                    SkinCompatManager.getInstance().restoreDefaultTheme();
+                } else {
+                    SkinCompatManager.getInstance().loadSkin("night.skin", null,
+                            SkinCompatManager.SKIN_LOADER_STRATEGY_ASSETS);
+                }
+                break;
+            case R.id.btn_sdcard:
+                if (SkinPreference.getInstance().getSkinName().equals("night.skin")) {
+                    SkinCompatManager.getInstance().restoreDefaultTheme();
+                } else {
+                    SkinCompatManager.getInstance().loadSkin("night.skin", null,
+                            CustomSDCardLoader.SKIN_LOADER_STRATEGY_SDCARD);
+                }
+                break;
         }
     }
 }

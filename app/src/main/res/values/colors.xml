@@ -7,6 +7,6 @@
     <color name="skin_bg">#4CC6CC</color>
     <color name="skin_btn_bg">#D8BC97</color>
 
-    <color name="skin_bg_night_skin">#347CCD</color>
-    <color name="skin_btn_bg_night_skin">#D6C94C</color>
+    <color name="night_skin_skin_bg">#347CCD</color>
+    <color name="night_skin_skin_btn_bg">#D6C94C</color>
 </resources>

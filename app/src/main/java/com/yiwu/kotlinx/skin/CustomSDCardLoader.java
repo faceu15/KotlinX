@@ -15,13 +15,12 @@ import skin.support.utils.SkinFileUtils;
  */
 public class CustomSDCardLoader extends SkinSDCardLoader {
 
-    public static final int SKIN_LOADER_STRATEGY_SDCARD = 1;
+    static final int SKIN_LOADER_STRATEGY_SDCARD = 1;
 
     @Override
     protected String getSkinPath(Context context, String skinName) {
-        String absolutePath = new File(SkinFileUtils.getSkinDir(context), skinName).getAbsolutePath();
-        Log.i("DDDD", "CustomSDCardLoader[22]->getSkinPath: "+absolutePath);
-        return absolutePath;
+        File file = new File(SkinFileUtils.getSkinDir(context), skinName);
+        return file.getAbsolutePath();
     }
 
     @Override

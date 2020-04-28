@@ -4,8 +4,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <permission
         android:name="com.yiwu.kotlinx.permission.ACCESS_BOOK_SERVICE"
         android:protectionLevel="normal" />
@@ -28,7 +28,7 @@
         </activity>
         <activity android:name=".BookManagerActivity" />
         <activity android:name=".BinderPoolActivity" />
-        <activity android:name=".skin.SkinActivity"/>
+        <activity android:name=".skin.SkinActivity" />
 
         <service
             android:name=".service.BookManagerService"

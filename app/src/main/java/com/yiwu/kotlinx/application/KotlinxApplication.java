@@ -14,15 +14,20 @@ import skin.support.app.SkinAppCompatViewInflater;
  */
 public class KotlinxApplication extends Application {
 
+    private static KotlinxApplication mInstance = null;
+
+    public static KotlinxApplication getInstance() {
+        return mInstance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mInstance = this;
         //皮肤框架初始化
         SkinCompatManager.withoutActivity(this)
                 .addInflater(new SkinAppCompatViewInflater())
                 .addStrategy(new CustomSDCardLoader())
-                .setSkinStatusBarColorEnable(true)
-                .setSkinWindowBackgroundEnable(true)
                 .loadSkin();
     }
 }

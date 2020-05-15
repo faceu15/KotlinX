@@ -3,6 +3,7 @@
     <string name="skin_activity">SkinActivity</string>
     <string name="binderpoolactivity">BinderPoolActivity</string>
     <string name="bookactivity">BookActivity</string>
+    <string name="request_activity">RequestActivity</string>
 
     <string name="change_skin">应用换肤</string>
     <string name="change_skin_assets">Assets换肤</string>

@@ -16,6 +16,21 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("..\\ktx.jks")
+            storePassword "123456"
+            keyAlias "lotlinx"
+            keyPassword "123456"
+        }
+        debug {
+            storeFile file("..\\ktx.jks")
+            storePassword "123456"
+            keyAlias "lotlinx"
+            keyPassword "123456"
+        }
+    }
+
     sourceSets {
         main {
             res.srcDirs = ['src/main/res', 'src/main/res-night']
@@ -23,8 +38,14 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,11 +56,23 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.txt' // picks the JavaMail license file
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -69,8 +102,8 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$rootProject.recyclerViewVersion"
     implementation "androidx.leanback:leanback:$rootProject.leanbackVersion"
 
-    implementation "androidx.navigation:navigation-fragment:$rootProject.navigationVersion"
-    implementation "androidx.navigation:navigation-ui:$rootProject.navigationVersion"
+//    implementation "androidx.navigation:navigation-fragment:$rootProject.navigationVersion"
+//    implementation "androidx.navigation:navigation-ui:$rootProject.navigationVersion"
 
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
@@ -97,4 +130,17 @@ dependencies {
     implementation "com.safframework.log:saf-logginginterceptor:$rootProject.logginginterceptor"
 
     implementation "org.apache.httpcomponents:httpclient:$rootProject.httpclient"
+
+    implementation 'com.sun.mail:android-mail:1.6.0'
+    implementation 'com.sun.mail:android-activation:1.6.0'
+
+    implementation 'org.aspectj:aspectjrt:1.8.13'
+
+    implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.9.1"
+    annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.1"
+
+    implementation 'com.guolindev.permissionx:permissionx:1.6.1'
+
+//    api project(':transfer')
+    implementation 'com.excellence.transfer:transfer:1.0'
 }

@@ -2,6 +2,7 @@ package com.yiwu.kotlinx.application;
 
 import android.app.Application;
 
+import com.excellence.transfer.utils.RemoteDebugManager;
 import com.yiwu.kotlinx.skin.CustomSDCardLoader;
 
 import skin.support.SkinCompatManager;
@@ -29,5 +30,8 @@ public class KotlinxApplication extends Application {
                 .addInflater(new SkinAppCompatViewInflater())
                 .addStrategy(new CustomSDCardLoader())
                 .loadSkin();
+
+        RemoteDebugManager.getInstance()
+                .initialize(this);
     }
 }

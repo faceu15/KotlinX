@@ -49,5 +49,6 @@
     <dimen name="padding_super_micro">8dp</dimen>
     <dimen name="padding_tiny">5dp</dimen>
     <dimen name="no_padding">0dp</dimen>
+    <dimen name="common_btn_width">140dp</dimen>
 
 </resources>

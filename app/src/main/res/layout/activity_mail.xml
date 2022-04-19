@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="onClickListener"
+            type="View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".mail.MailActivity">
+
+        <Button
+            android:id="@+id/btn_logcat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_btn_bg_selector"
+            android:onClick="@{onClickListener}"
+            android:text="catch log"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.386"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.325" />
+
+        <Button
+            android:id="@+id/btn_stop_logcat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_btn_bg_selector"
+            android:onClick="@{onClickListener}"
+            android:text="stop catch"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.229"
+            app:layout_constraintStart_toEndOf="@+id/btn_logcat"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.325" />
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/common_btn_bg_selector"
+            android:onClick="@{onClickListener}"
+            android:text="UpdateApk"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@+id/btn_send"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_logcat"
+            app:layout_constraintTop_toBottomOf="@+id/btn_logcat" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/common_btn_bg_selector"
+            android:onClick="@{onClickListener}"
+            android:text="Send"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.604"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_stop_logcat" />
+
+        <Button
+            android:id="@+id/btn_remote_debug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/common_btn_bg_selector"
+            android:onClick="@{onClickListener}"
+            android:text="RemoteDebug"
+            app:layout_constraintStart_toStartOf="@+id/btn_update"
+            app:layout_constraintTop_toBottomOf="@+id/btn_update" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

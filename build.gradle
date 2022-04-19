@@ -2,9 +2,15 @@
 
 buildscript {
     ext.kotlin_version = '1.3.61'
+
+
     repositories {
+        maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         google()
         jcenter()
+        maven {
+            url "https://maven.java.net/content/groups/public/"
+        }
         
     }
     dependencies {
@@ -12,6 +18,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'org.aspectj:aspectjtools:1.8.9'
+        classpath 'org.aspectj:aspectjweaver:1.8.9'
     }
 
     ext{
@@ -47,12 +55,29 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '62537b84606fff01d4a53ce7'
+                password 'lYsKuD)b-x9l'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2214640-release-YPQKgJ/'
+        }
+        maven {
+            credentials {
+                username '62537b84606fff01d4a53ce7'
+                password 'lYsKuD)b-x9l'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2214640-snapshot-LI3CBi/'
+        }
         google()
         jcenter()
         
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+//task clean(type: Delete) {
+//    delete rootProject.buildDir
+//}

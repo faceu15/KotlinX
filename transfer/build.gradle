@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.library'
+}
+apply from: '../buildJar.gradle'
+
+apply plugin: 'maven'
+
+group 'com.excellence'
+version '1.0'
+def artifactId = 'transfer'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: 'https://packages.aliyun.com/maven/repository/2214640-release-YPQKgJ/') {
+                authentication(
+                        userName: '62537b84606fff01d4a53ce7',
+                        password: 'lYsKuD)b-x9l'
+                )
+            }
+            snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2214640-snapshot-LI3CBi/') {
+                authentication(
+                        userName: '62537b84606fff01d4a53ce7',
+                        password: 'lYsKuD)b-x9l'
+                )
+            }
+            pom.version = '1.0'
+            pom.artifactId = 'transfer'
+            pom.groupId = 'com.excellence.transfer'
+        }
+    }
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    api "org.java-websocket:Java-WebSocket:1.5.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.16"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    implementation "com.uber.autodispose:autodispose:1.4.0"
+    implementation "com.uber.autodispose:autodispose-android-archcomponents:1.4.0"
+
+}
